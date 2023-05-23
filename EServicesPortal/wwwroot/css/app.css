@@ -23,6 +23,20 @@ body {
 }
 /* end of spinner */
 
+.gradient-custom {
+    background: linear-gradient(to right bottom, rgba(82, 78, 183, 1), rgba(137, 196, 244, 1))
+}
+
+.profile-img {
+    border-radius: 50%
+}
+
+@media (max-width: 700px) {
+    .profile-img {
+        margin: 0;
+    }
+}
+
 h1:focus {
     outline: none;
 }
