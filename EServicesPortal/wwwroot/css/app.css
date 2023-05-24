@@ -3,6 +3,9 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+.text-bold {
+    font-weight: bold;
+}
 .h-custom {
     height: calc(100% - 73px);
 }

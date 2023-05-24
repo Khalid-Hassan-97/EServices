@@ -20,7 +20,9 @@
                                    class="form-control form-control-lg"
                                    maxlength="30"
                                    placeholder="Enter Username"
-                               @bind=@UserDto.Username>
+                               @bind=@UserDto.Username
+                               @onkeydown=@Enter
+                               @bind:event="oninput">
                             @if (UsernameEmpty)
                             {
                                 <p class="text-danger">Please enter username</p>
@@ -32,7 +34,9 @@
                                    class="form-control form-control-lg"
                                    maxlength="30"
                                    placeholder="Enter password"
-                               @bind=@UserDto.Password />
+                               @bind=@UserDto.Password
+                               @onkeydown=@Enter
+                               @bind:event="oninput" />
                             @if (PasswordEmpty)
                             {
                                 <p class="text-danger">Please enter password</p>
@@ -111,5 +115,13 @@ else
         }
 
         IsLoading = false;
+    }
+
+    private async Task Enter(KeyboardEventArgs e)
+    {
+        if (e.Code == "Enter")
+        {
+            await LoginUser();
+        }
     }
 }
