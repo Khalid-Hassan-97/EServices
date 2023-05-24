@@ -1,0 +1,103 @@
+﻿@using RestSharp;
+@using Shared;
+
+@if (!IsAuthenticated)
+{
+    <section class="vh-100">
+        <div class="container-fluid h-custom">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-sm-8 col-lg-6 col-xl-5">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                         class="img-fluid"
+                         alt="Sample image">
+                </div>
+                <div class="col-sm-8 col-lg-6 col-xl-4 offset-xl-1">
+                    <form>
+                        <h1 class="mb-4">E-Services</h1>
+
+                        <div class="form-outline mb-4">
+                            <input type="text"
+                                   class="form-control form-control-lg"
+                                   placeholder="Enter Username"
+                               @bind=@UserDto.Username />
+                            @if (UsernameEmpty)
+                            {
+                                <p class="text-danger">Please enter username</p>
+                            }
+                        </div>
+
+                        <div class="form-outline mb-3">
+                            <input type="password"
+                                   class="form-control form-control-lg"
+                                   placeholder="Enter password"
+                               @bind=@UserDto.Password />
+                            @if (PasswordEmpty)
+                            {
+                                <p class="text-danger">Please enter password</p>
+                            }
+                        </div>
+
+                        <div class="text-center text-lg-start mt-4 pt-2">
+                            <button @onclick=@LoginUser type="button" class="btn btn-primary btn-lg">
+                                Login
+                            </button>
+                        </div>
+                        @if (NoResponse)
+                        {
+                            <p class="mt-2">Wrong Credentials</p>
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else
+{
+    @if (UserDto.UserType == UserType.Admin)
+    {
+        <Admin Users="@UserResponse.UserDtos" Name="@UserDto.Username"></Admin>
+    }
+    else
+    {
+        <Customer></Customer>
+    }
+}
+
+
+@code {
+
+    public UserDto UserDto { get; set; } = new UserDto();
+    public bool UsernameEmpty { get; set; }
+    public bool PasswordEmpty { get; set; }
+    public bool IsAuthenticated { get; set; } = false;
+    public bool NoResponse { get; set; } = false;
+    public UserResponse UserResponse { get; set; } = new UserResponse();
+
+    private async Task LoginUser()
+    {
+        UsernameEmpty = string.IsNullOrEmpty(UserDto.Username);
+        PasswordEmpty = string.IsNullOrEmpty(UserDto.Password);
+
+        if (UsernameEmpty || PasswordEmpty)
+        {
+            await Task.CompletedTask;
+        }
+
+        var options = new RestClientOptions("https://localhost:7025");
+        var client = new RestClient(options);
+        var request = new RestRequest("/login").AddJsonBody(UserDto);
+        UserResponse = await client.PostAsync<UserResponse>(request);
+
+        if (UserResponse == null)
+        {
+            NoResponse = true;
+        }
+        else
+        {
+            NoResponse = false;
+            IsAuthenticated = true;
+            UserDto = UserResponse.UserDto;
+        }
+    }
+}

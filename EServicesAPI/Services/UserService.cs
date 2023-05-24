@@ -12,10 +12,11 @@ namespace EServicesAPI.Services
             _dataContext = dataContext;
         }
 
-        public List<User> GetUsers()
+        public List<UserDto> GetUsers()
         {
             var users = _dataContext.Users.ToList();
-            return users;
+            var userDtos = users.Select(MiniAutoMapper).ToList();
+            return userDtos;
         }
 
         public UserDto? Login(UserDto userDto)
@@ -27,7 +28,14 @@ namespace EServicesAPI.Services
                 return null;
             }
 
-            var userDto_ = new UserDto()
+            var userDto_ = MiniAutoMapper(user);
+
+            return userDto_;
+        }
+
+        private UserDto MiniAutoMapper(User user)
+        {
+            var userDto = new UserDto()
             {
                 UserId = user.UserId,
                 Username = user.Username,
@@ -37,7 +45,7 @@ namespace EServicesAPI.Services
                 Name = user.Name,
             };
 
-            return userDto_;
+            return userDto;
         }
     }
 }

@@ -6,6 +6,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+            policy =>
+            {
+                policy.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+            });
+});
 builder.Services.AddDbContext<DataContext>();
 builder.Services.AddScoped<IUserService, UserService>();
 
@@ -18,27 +28,33 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors();
 
-app.MapGet("/users", (IUserService userService) =>
-{
-    var users = userService.GetUsers();
-    return users;
-})
-.WithName("GetUsers")
-.WithOpenApi();
-
-app.MapPost("/login", (UserDto userDto,IUserService userService) =>
+app.MapPost("/login", (UserDto userDto, IUserService userService) =>
 {
     var _userDto = userService.Login(userDto);
     if (_userDto == null)
     {
         return null;
     }
-    return _userDto;
+
+    if (_userDto.UserType == UserType.Admin)
+    {
+        var userDtos = userService.GetUsers();
+        var userResponse = new UserResponse()
+        {
+            UserDtos = userDtos,
+            UserDto = _userDto
+        };
+        return userResponse;
+    }
+
+    return new UserResponse()
+    {
+        UserDto = userDto,
+    };
 })
 .WithName("Login")
 .WithOpenApi();
-
-
 
 app.Run();

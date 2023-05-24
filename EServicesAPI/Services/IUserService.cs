@@ -5,7 +5,7 @@ namespace EServicesAPI.Services
 {
     public interface IUserService
     {
-        List<User> GetUsers();
+        List<UserDto> GetUsers();
         UserDto? Login(UserDto userDto);
     }
 }
