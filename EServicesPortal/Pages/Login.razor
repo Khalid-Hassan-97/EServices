@@ -13,13 +13,13 @@
                 </div>
                 <div class="col-sm-8 col-lg-6 col-xl-4 offset-xl-1">
                     <form>
-                        <h1 class="mb-4">E-Services</h1>
+                        <h1 class="mb-4 text-primary">E-Services</h1>
 
                         <div class="form-outline mb-4">
                             <input type="text"
                                    class="form-control form-control-lg"
                                    placeholder="Enter Username"
-                               @bind=@UserDto.Username />
+                               @bind=@UserDto.Username>
                             @if (UsernameEmpty)
                             {
                                 <p class="text-danger">Please enter username</p>
@@ -39,12 +39,17 @@
 
                         <div class="text-center text-lg-start mt-4 pt-2">
                             <button @onclick=@LoginUser type="button" class="btn btn-primary btn-lg">
-                                Login
+                                <span>Login </span>
+                                @if (IsLoading)
+                                {
+                                    <div class="spinner-border text-light spinner-border-sm" role="status">
+                                    </div>
+                                }
                             </button>
                         </div>
                         @if (NoResponse)
                         {
-                            <p class="mt-2">Wrong Credentials</p>
+                            <p class="mt-2 text-danger">Wrong Credentials</p>
                         }
                     </form>
                 </div>
@@ -54,13 +59,13 @@
 }
 else
 {
-    @if (UserDto.UserType == UserType.Admin)
+    @if (UserResponse.UserDto.UserType == UserType.Admin)
     {
-        <Admin Users="@UserResponse.UserDtos" Name="@UserDto.Username"></Admin>
+        <Admin UserResponse="@UserResponse"></Admin>
     }
     else
     {
-        <Customer></Customer>
+        <Customer UserDto="UserResponse.UserDto"></Customer>
     }
 }
 
@@ -73,15 +78,19 @@ else
     public bool IsAuthenticated { get; set; } = false;
     public bool NoResponse { get; set; } = false;
     public UserResponse UserResponse { get; set; } = new UserResponse();
+    public bool IsLoading { get; set; } = false;
 
     private async Task LoginUser()
     {
+        IsLoading = true;
+
         UsernameEmpty = string.IsNullOrEmpty(UserDto.Username);
         PasswordEmpty = string.IsNullOrEmpty(UserDto.Password);
 
         if (UsernameEmpty || PasswordEmpty)
         {
-            await Task.CompletedTask;
+            IsLoading = false;
+            return;
         }
 
         var options = new RestClientOptions("https://localhost:7025");
@@ -97,7 +106,8 @@ else
         {
             NoResponse = false;
             IsAuthenticated = true;
-            UserDto = UserResponse.UserDto;
         }
+
+        IsLoading = false;
     }
 }

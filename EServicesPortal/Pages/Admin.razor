@@ -8,7 +8,7 @@
                     <div class="row g-0">
                         <div class="col-md-4 gradient-custom text-center text-white shift-left">
                             <img src="img/admin.jpeg" alt="Avatar" class="img-fluid my-3 profile-img" />
-                            <h5>Welcome, @Name</h5>
+                            <h5>Welcome, @UserResponse.UserDto.Username</h5>
                         </div>
                         <div class="col-md-8">
                             <div class="card-body p-4">
@@ -20,7 +20,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var user in Users)
+                                        @foreach (var user in UserResponse.UserDtos)
                                         {
                                             <tr>
                                                 <td>
@@ -55,8 +55,5 @@
 
 @code {
     [Parameter]
-    public List<UserDto> Users { get; set; } = new List<UserDto>();
-
-    [Parameter]
-    public string Name { get; set; }
+    public UserResponse UserResponse { get; set; }
 }

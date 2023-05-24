@@ -1,4 +1,4 @@
-﻿@page "/customer"
+﻿@using Shared;
 
 <section class="vh-100">
     <div class="container py-5 h-100">
@@ -8,7 +8,7 @@
                     <div class="row g-0">
                         <div class="col-md-4 gradient-custom text-center text-white shift-left">
                             <img src="img/customer.jpeg" alt="Avatar" class="img-fluid my-3 profile-img" />
-                            <h5>Welcome, Username</h5>
+                            <h5>Welcome, @UserDto.Username</h5>
                         </div>
                         <div class="col-md-8">
                             <div class="card-body p-4">
@@ -17,15 +17,15 @@
                                 <div class="row pt-1">
                                     <div class="col-12 mb-3">
                                         <h6 class="m-0">Email</h6>
-                                        <p class="text-muted">info@example.com</p>
+                                        <p class="text-muted">@UserDto.Email</p>
                                     </div>
                                     <div class="col-12 mb-3">
                                         <h6 class="m-0">Name</h6>
-                                        <p class="text-muted">Ahmed Ali Omer Yassir</p>
+                                        <p class="text-muted">@UserDto.Name</p>
                                     </div>
                                     <div class="col-12 mb-3">
                                         <h6 class="m-0">Mobile</h6>
-                                        <p class="text-muted">+97124324311</p>
+                                        <p class="text-muted">@UserDto.PhoneNumber</p>
                                     </div>
                                 </div>
                             </div>
@@ -36,3 +36,8 @@
         </div>
     </div>
 </section>
+
+@code {
+    [Parameter]
+    public UserDto UserDto { get; set; }
+}

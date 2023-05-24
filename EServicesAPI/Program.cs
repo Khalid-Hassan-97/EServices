@@ -51,7 +51,7 @@ app.MapPost("/login", (UserDto userDto, IUserService userService) =>
 
     return new UserResponse()
     {
-        UserDto = userDto,
+        UserDto = _userDto,
     };
 })
 .WithName("Login")
