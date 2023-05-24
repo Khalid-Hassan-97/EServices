@@ -50,7 +50,7 @@ This is a shared class library used between frontend and backend. It contains th
           <li><img src="https://github.com/Khalid-Hassan-97/EServices/assets/54312650/6dc61af3-da84-4623-99df-e34af65b454f" /></li>
         </ul>
       </li>
-      <li>Perform the migration using Visual Studio and here we don't need to create the database manually using Microsoft SQL Server Management Studio. All what we need to do is to open "Package Manager Console" then select Default Project as "EServicesAPI" and run "Update-Database" command. The following screenshot demonstrate the process
+      <li>Perform the migration using Visual Studio and here we don't need to create the database manually using Microsoft SQL Server Management Studio. All what we need to do is Selecting "EServicesAPI" as the startup project. Then open "Package Manager Console" then select Default Project as "EServicesAPI" and run "Update-Database" command. The following screenshot demonstrate the process
         <ul>
           <li><img src="https://github.com/Khalid-Hassan-97/EServices/assets/54312650/56f438fa-6f96-48a2-a37a-80c668d990bb" /></li>
         </ul>
@@ -64,7 +64,7 @@ This is a shared class library used between frontend and backend. It contains th
       <li><img src="https://github.com/Khalid-Hassan-97/EServices/assets/54312650/d1296290-333a-41e1-8784-72433f17e042" /></li>
     </ul>
   </li>
-  <li>The following video demonstrate the website. I tried to cover all the cases in the website. Remember to run the start without debugging button to experience the behaviour as if the website is published.
+  <li>The following video demonstrate the website. I tried to cover all the cases in the website to run the website from the repository. Remember to run the start without debugging button to experience the behaviour as if the website is published.
     <ul>
       <li>Login information in the next point</li>
       <li>![Watch the Video] https://github.com/Khalid-Hassan-97/EServices/assets/54312650/36b5d002-de28-423b-af4d-7e82ddea3fc7</li>
