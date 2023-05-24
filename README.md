@@ -43,23 +43,30 @@ This is a shared class library used between frontend and backend. It contains th
     <ol>
       <li>Connect to localdb using Microsoft SQL Server Managment studio with creating a database named "EServicesDb" manually. Then run the script.sql inside Solution Items folder file against "EServicesDb" to apply all necessary migrations. The following screenshots demonstrate the process
         <ul>
-          <li>![image](https://github.com/Khalid-Hassan-97/EServices/assets/54312650/15cc7844-660b-4602-b817-15d23b504e27)</li>
-          <li>![image](https://github.com/Khalid-Hassan-97/EServices/assets/54312650/98ae527f-0aeb-4215-922f-963133298706)</li>
-          <li>![image](https://github.com/Khalid-Hassan-97/EServices/assets/54312650/1c839d0b-1e88-497e-9ce3-1642427afff4)</li>
-          <li>![image](https://github.com/Khalid-Hassan-97/EServices/assets/54312650/841bf95a-e749-4647-92ff-fe5aef2ceb9b)</li>
-          <li>![image](https://github.com/Khalid-Hassan-97/EServices/assets/54312650/6dc61af3-da84-4623-99df-e34af65b454f)</li>
+          <li><img src="https://github.com/Khalid-Hassan-97/EServices/assets/54312650/15cc7844-660b-4602-b817-15d23b504e27" /></li>
+          <li><img src="https://github.com/Khalid-Hassan-97/EServices/assets/54312650/98ae527f-0aeb-4215-922f-963133298706" /></li>
+          <li><img src="https://github.com/Khalid-Hassan-97/EServices/assets/54312650/1c839d0b-1e88-497e-9ce3-1642427afff4" /></li>
+          <li><img src="https://github.com/Khalid-Hassan-97/EServices/assets/54312650/841bf95a-e749-4647-92ff-fe5aef2ceb9b" /></li>
+          <li><img src="https://github.com/Khalid-Hassan-97/EServices/assets/54312650/6dc61af3-da84-4623-99df-e34af65b454f" /></li>
         </ul>
       </li>
       <li>Perform the migration using Visual Studio and here we don't need to create the database manually using Microsoft SQL Server Management Studio. All what we need to do is to open "Package Manager Console" then select Default Project as "EServicesAPI" and run "Update-Database" command. The following screenshot demonstrate the process
         <ul>
-          <li>![image](https://github.com/Khalid-Hassan-97/EServices/assets/54312650/56f438fa-6f96-48a2-a37a-80c668d990bb)</li>
+          <li><img src="https://github.com/Khalid-Hassan-97/EServices/assets/54312650/56f438fa-6f96-48a2-a37a-80c668d990bb" /></li>
         </ul>
       </li>
     </ol>
   </li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
+  <li>After running the database migration successfully set the startup projects as multiple with selecting "EServicesAPI" and "EServicesPortal" and make sure to run the https profile because the frontend is connected to the https profile
+    <ul>
+      <li><img src="https://github.com/Khalid-Hassan-97/EServices/assets/54312650/600e6856-1c50-4f6f-9d50-3774043134e2" /></li>
+      <li><img src="https://github.com/Khalid-Hassan-97/EServices/assets/54312650/7328ae42-4e6d-474d-9d3d-f13c14262a38)" /></li>
+      <li><img src="https://github.com/Khalid-Hassan-97/EServices/assets/54312650/d1296290-333a-41e1-8784-72433f17e042" /></li>
+    </ul>
+  </li>
+  <li>After playing the start button you should get the following views. The following are video demonstrate the website. I tried to cover all the cases in the screenshots.
+    <ul>
+      <li></li>
+    </ul>
+  </li>
 </ol>
