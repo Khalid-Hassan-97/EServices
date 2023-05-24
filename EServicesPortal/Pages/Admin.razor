@@ -1,4 +1,5 @@
 ﻿@using Shared;
+@inject NavigationManager uriHelper;
 
 <section class="vh-100">
     <div class="container py-5 h-100">
@@ -44,6 +45,7 @@
                                         }
                                     </tbody>
                                 </table>
+                                <button class="btn btn-primary bt-lg mt-2" @onclick=Refresh>Back</button>
                             </div>
                         </div>
                     </div>
@@ -56,4 +58,9 @@
 @code {
     [Parameter]
     public UserResponse UserResponse { get; set; }
+
+    private void Refresh()
+    {
+        uriHelper.NavigateTo("", forceLoad: true);
+    }
 }
