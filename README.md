@@ -64,9 +64,20 @@ This is a shared class library used between frontend and backend. It contains th
       <li><img src="https://github.com/Khalid-Hassan-97/EServices/assets/54312650/d1296290-333a-41e1-8784-72433f17e042" /></li>
     </ul>
   </li>
-  <li>After playing the start button you should get the following views. The following are video demonstrate the website. I tried to cover all the cases in the screenshots.
+  <li>The following video demonstrate the website. I tried to cover all the cases in the website. Remember to run the start without debugging button to experience the behaviour as if the website is published.
     <ul>
-      <li></li>
+      <li>Login information in the next point</li>
+      <li>![Watch the Video] https://github.com/Khalid-Hassan-97/EServices/assets/54312650/36b5d002-de28-423b-af4d-7e82ddea3fc7</li>
+    </ul>
+  </li>
+  <li>Users Credentials
+    <ul>
+      <li>Username: Ahmed_50, Password: Ahmed@123</li>
+      <li>Username: Ali_51, Password: Ali@123</li>
+      <li>Username: Omer_52, Password: Omer@123</li>
+      <li>Username: Yassir_53, Password: Yassir@123</li>
+      <li>Username: Rami_90, Password: Rami@123</li>
+      <li>Username: Hussam_91, Password: Hussam@123</li>
     </ul>
   </li>
 </ol>
