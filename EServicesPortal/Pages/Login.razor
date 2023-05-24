@@ -18,6 +18,7 @@
                         <div class="form-outline mb-4">
                             <input type="text"
                                    class="form-control form-control-lg"
+                                   maxlength="30"
                                    placeholder="Enter Username"
                                @bind=@UserDto.Username>
                             @if (UsernameEmpty)
@@ -29,6 +30,7 @@
                         <div class="form-outline mb-3">
                             <input type="password"
                                    class="form-control form-control-lg"
+                                   maxlength="30"
                                    placeholder="Enter password"
                                @bind=@UserDto.Password />
                             @if (PasswordEmpty)
